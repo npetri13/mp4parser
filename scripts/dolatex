@@ -1,0 +1,20 @@
+#! /bin/bash
+
+rm -f ./lgrind/*.*
+
+lgrind -i main.c > main_c.tex
+lgrind -i shared_dec.h > shared_dec_h.tex
+lgrind -i switch.lex > switch_lex.tex
+lgrind -i makefile > makefile.tex
+
+lgrind -i group.y > group_y.tex
+lgrind -i group.lex > group_lex.tex
+
+lgrind -i group2d.y > group2d_y.tex
+lgrind -i group2d.lex > group2d_lex.tex
+
+lgrind -i node_table.c > node_table_c.tex
+lgrind -i node_table.h > node_table_h.tex
+
+
+mv *.tex ./lgrind/

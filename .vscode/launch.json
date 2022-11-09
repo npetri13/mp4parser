@@ -1,0 +1,16 @@
+{
+  "configurations": [
+  {
+    "name": "Debug",
+    "type": "cppdbg",
+    "request": "launch",
+    "program": "${workspaceFolder}/dist/mp4parser.out",
+    "args": ["../data/test_scene.wrl"],
+    "stopAtEntry": false,
+    "cwd": "${fileDirname}",
+    "environment": [],
+    "externalConsole": false,
+    "MIMode": "lldb"
+  }
+  ]
+}

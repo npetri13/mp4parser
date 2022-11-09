@@ -1,0 +1,71 @@
+DEF GRP Group {
+	children [
+		Fog {
+# Fehlende Farbkomponente
+			color 0.0 0.0
+			visibilityRange 40.0
+			fogType "LINEAR"
+		}
+                DirectionalLight {
+                        color 1 1 1
+                }
+# Ein leerer Node
+		Viewpoint { }
+		
+		DEF TRANSF01 Transform {
+# Überflüssige Koordinate	
+		translation -4 0 0 5
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							diffuseColor 1 0 0
+						}
+					}
+# Hierarchieverletzung
+					geometry Material {
+						size 2 2 2
+					}
+				}
+			]
+		}
+		DEF TIMER01 TimeSensor { 
+			enabled TRUE 
+			loop TRUE 
+			cycleInterval 4 5 }
+		DEF INTERP01 OrientationInterpolator {
+		  key [0, 0.025, 0.05 ]
+		  keyValue [-0.1172 -0.9931 0.008372 -0.1436, -0.05562 -0.9984 0.008417 -0.3009, 
+# Ungültiges MF_ROTATION Feld
+		    -0.03613 -0.9993 0.008424 -0.4584 -0.4584 ] }
+	]
+}
+
+ROUTE TIMER01.fraction_changed TO INTERP01.set_fraction
+ROUTE INTERP01.value_changed TO TRANSF01.rotation
+
+# Ein falscher Bezeichner
+ROUTE NON.value_changed TO NON.rotation
+
+AT 2000 {
+	APPEND TO GRP.children
+		Transform {
+			translation 4 0 0
+			rotation 0 0 1 0.48539816
+
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							diffuseColor 0 1 0
+						}
+					}
+					geometry Box {
+# Überflüssige Koordinate
+						size 3 3 3 4
+					}
+				}
+			]
+		}
+}
+

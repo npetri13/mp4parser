@@ -1,0 +1,31 @@
+#! /bin/bash
+
+if test -d ./mp4parser ; then 
+	echo "distribution directory already exsist, please remove"
+else
+	make distclean
+	echo "distribute..."
+	mkdir ./mp4parser
+	
+
+	cp ./main.c ./mp4parser/main.c
+	cp ./switch.lex ./mp4parser/switch.lex
+	
+	cp ./group.y ./mp4parser/group.y
+	cp ./group.lex ./mp4parser/group.lex
+
+	cp ./group2d.y ./mp4parser/group2d.y
+	cp ./group2d.lex ./mp4parser/group2d.lex
+
+	cp ./makefile ./mp4parser/makefile
+	cp ./node_table.c ./mp4parser/node_table.c
+
+	cp ./*.h ./mp4parser/
+
+	cp ./README ./mp4parser/README
+	cp ./distill ./mp4parser/distill
+	cp ./dolatex ./mp4parser/dolatex	
+
+	tar -cz ./mp4parser/ -f mp4parser.tgz
+	rm -fr ./mp4parser
+fi
